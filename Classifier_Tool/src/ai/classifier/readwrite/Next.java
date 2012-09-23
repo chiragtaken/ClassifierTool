@@ -1,4 +1,4 @@
-package swing;
+package ai.classifier.readwrite;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -14,6 +14,8 @@ import java.util.Set;
 
 
 import javax.swing.JTextArea;
+
+import ai.classifier.algorithms.SimplePerceptron;
 
 /**
  * @author Chirag
@@ -129,6 +131,7 @@ public class Next {
 		}		
 		
 	}
+	
 	private int split = 0;
 	public void selectAlgoAndSplit(){
 		createIdSentiment();

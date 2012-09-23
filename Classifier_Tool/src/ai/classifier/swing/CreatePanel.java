@@ -1,4 +1,4 @@
-package swing;
+package ai.classifier.swing;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -27,6 +27,8 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.DefaultCaret;
+
+import ai.classifier.readwrite.Next;
 
 
 /**

@@ -1,4 +1,4 @@
-package swing;
+package ai.classifier.algorithms;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

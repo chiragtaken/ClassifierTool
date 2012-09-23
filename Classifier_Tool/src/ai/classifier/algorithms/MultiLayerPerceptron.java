@@ -1,4 +1,4 @@
-package swing;
+package ai.classifier.algorithms;
 
 import java.util.ArrayList;
 import java.util.HashMap;
