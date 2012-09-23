@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author Chirag
- *
+ * Term Frequency:  
  */
 public class CalculateTF {
 	private HashMap<String, HashMap<String, Integer>> tf;
@@ -34,6 +34,8 @@ public class CalculateTF {
 	}
 
 }
+
+
 
 /*
 	public void createTF(){

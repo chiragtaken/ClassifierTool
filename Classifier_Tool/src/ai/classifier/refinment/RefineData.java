@@ -24,6 +24,9 @@ public class RefineData {
 	public static void setStopList(List<String> stopList){
 		RefineData.stopList = stopList;
 	}
+	public static List<String> getGlobalWordList(){
+		return globalWordList;
+	}
 	
 	/**
 	 * In order to search for a word of docText in stopList
