@@ -6,9 +6,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.JTextArea;
+import ai.classifier.objects.InverseDocumentFrequency;
+import ai.classifier.objects.TermFrequency;
 import ai.classifier.refinment.RefineData;
 
 /**
@@ -18,7 +20,11 @@ import ai.classifier.refinment.RefineData;
  * 
  * Moreover, I do not want to keep the data in the memory
  * for this I am reading doc file line by line refining it
- * and write back into tempprary file.
+ * and write back into temporary file.
+ */
+/**
+ * @author Chirag
+ *
  */
 public class ReadFile {
 	
@@ -26,12 +32,21 @@ public class ReadFile {
 	private static List<String> stopList = new ArrayList<String>();
 	private RefineData refineData;
 
-//	private JTextArea area;
 		
-	public ReadFile(File csvFileName,File stopFileName, JTextArea area) {
+	/**
+	 * Default Constructor
+	 */
+	public ReadFile() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	/**
+	 * @param csvFileName
+	 * @param stopFileName
+	 */
+	public ReadFile(File csvFileName,File stopFileName) {
 		this.csvName = csvFileName;
 		this.stopFileName = stopFileName;
-//		this.area = area;
 	}
 	
 	/**
@@ -86,8 +101,7 @@ public class ReadFile {
 			
 			//write document data to temporary file	
 				String docData = docId +","+docLabel+","+docText;
-				Write write = new Write();
-				write.writeInTempFile(docData);
+				WriteFile.writeInTempFile(docData, new File("File/temporary.csv"));
 				
 			}
 			fstream.close();dstream.close();reader.close();	
@@ -96,8 +110,44 @@ public class ReadFile {
 		}
 	}
 	
+	public static InverseDocumentFrequency readIDFFile(File fileName){
+		InverseDocumentFrequency inverseDocumentFrequency = new InverseDocumentFrequency();
+		try {
+			FileInputStream fstream = new FileInputStream(fileName);
+			DataInputStream	 dstream = new DataInputStream(fstream);
+			BufferedReader	reader = new BufferedReader(new InputStreamReader(dstream));
+			String line = reader.readLine();
+			String[] lineSplit = line.split(";");
+			inverseDocumentFrequency.setGlobalWordList(Arrays.asList(lineSplit[0]));
+			inverseDocumentFrequency.setGlobalWordCount(Arrays.asList(lineSplit[1]));
+			reader.close();dstream.close();
+		} catch (Exception e) {
+			System.out.println("Error in reading File: "+fileName+" : \n"+e);
+		}
+		return inverseDocumentFrequency; 
+	}
 	
-	
+	public static TermFrequency readTFFile(File fileName, int lineIndex){
+		TermFrequency termFrequency = new TermFrequency();
+		try {
+			FileInputStream fstream = new FileInputStream(fileName);
+			DataInputStream	 dstream = new DataInputStream(fstream);
+			BufferedReader	reader = new BufferedReader(new InputStreamReader(dstream));
+			while(lineIndex > 1){
+				reader.readLine();
+				lineIndex--;
+			}
+			String[] tfSplit = reader.readLine().split(";");
+			termFrequency.setDocId(tfSplit[0]);
+			termFrequency.setDocWords(Arrays.asList(tfSplit[1]));
+			termFrequency.setDovWordsValues(Arrays.asList(tfSplit[2]));
+			
+			reader.close();dstream.close();
+		} catch (Exception e) {
+			System.out.println("Error in reading File: "+fileName+" : \n"+e);
+		}
+		return termFrequency; 
+	}
 }
 
 

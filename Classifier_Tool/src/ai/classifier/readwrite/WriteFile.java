@@ -1,13 +1,14 @@
 package ai.classifier.readwrite;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
-public class Write {
+public class WriteFile {
 	
-	public void writeInTempFile(String docData){
+	public static void writeInTempFile(String docData, File fileName){
 		try{
-			FileWriter fstream = new FileWriter("temp.csv",true);
+			FileWriter fstream = new FileWriter(fileName,true);
 			BufferedWriter out = new BufferedWriter(fstream);
 			out.write(docData);
 			out.newLine();
