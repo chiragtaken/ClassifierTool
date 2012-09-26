@@ -2,6 +2,8 @@ Classifier tool is an alternate solution to WEKA toolkit which I believe does no
 
 Feature List in Classifier Tool:
 
-1. No need to know coding if you have data as in cvs format. Will add some more data formats. 
+1. No need to know coding if you have data in cvs format you can use tool to run various classification algorithms.
+   Will add some more data formats. 
 2. Various AI Algorithms like Naive Bayes, Single Layer Perceptron, Multi Layer Perceptron are implemented. 
-3. Graphs to display results so that results can be visualized and easily to understand 
+3. Graphs to display results so that results can be visualized and easily understood 
+4. Some Image classification algorithms are also implemented.
